@@ -1,0 +1,10 @@
+﻿<p> Social</p>
+
+@if (Model.DisplayTwitter)
+{
+    <a class="twitter-share-button" target="_blank" data-show-count="false"
+       href="@string.Format("https://twitter.com/intent/tweet?text={0}",Model.TwitterText)">
+        Tweet
+    </a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+}
+

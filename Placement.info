@@ -1,0 +1,7 @@
+﻿<Placement>
+  <Place Parts_SocialShare_Edit="Content:15"/>
+
+ <Match DisplayType="Detail">
+    <Place Parts_SocialShare="Content:4"/>
+  </Match>
+</Placement>

@@ -1,0 +1,15 @@
+﻿@model Moov2.Orchard.SocialShare.Models.SocialSharePart
+<h2>@T("Social Sharing")</h2>
+
+<fieldset>
+    <div class="form-group">
+        @Html.CheckBoxFor(m => m.DisplayTwitter)
+        @Html.LabelFor(m => m.DisplayTwitter, T("Display Twitter Share").Text, new { @class = "forcheckbox" })
+        @Html.Hint(T("Check this if you want to display twitter sharing for this content item."))
+    </div>
+    <div class="form-group" data-controllerid="@Html.FieldIdFor(m => m.DisplayTwitter)">
+        @Html.LabelFor(m => m.TwitterText, T("Share Text"))
+        @Html.TextBoxFor(m => m.TwitterText)
+        @Html.Hint(T("The text that will be posted to a users twitter"))
+    </div>
+</fieldset>
