@@ -3,7 +3,6 @@ using Orchard.ContentManagement;
 using Orchard.ContentManagement.Drivers;
 using Orchard.ContentManagement.Handlers;
 using Orchard.Localization;
-
 namespace Moov2.Orchard.SocialShare.Drivers
 {
     public class SocialSharePartDriver : ContentPartDriver<SocialSharePart>
@@ -39,18 +38,18 @@ namespace Moov2.Orchard.SocialShare.Drivers
                     () => shapeHelper.Parts_SocialShare(
                         Part: part,
                         DisplayTwitter: part.DisplayTwitter,
-                        TwitterText: part.TwitterText
-                    ));
+                        TwitterText: part.TwitterText,
+                        DisplayFacebook: part.DisplayFacebook
+                ));
             }
 
             return Combined(
                 ContentShape("Parts_SocialShare_SummaryAdmin",
                     () => shapeHelper.Parts_SocialShare_SummaryAdmin(Part: part))
                 );
+
         }
-
-
-
+        
         #endregion
 
         #region Editor

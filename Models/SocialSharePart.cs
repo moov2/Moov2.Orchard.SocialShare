@@ -15,5 +15,11 @@ namespace Moov2.Orchard.SocialShare.Models
             get { return Retrieve(x => x.TwitterText); }
             set { Store(x => x.TwitterText, value); }
         }
+
+        public bool DisplayFacebook
+        {
+            get { return Retrieve(x => x.DisplayFacebook); }
+            set { Store(x => x.DisplayFacebook, value); }
+        }
     }
 }
