@@ -12,4 +12,10 @@
         @Html.TextBoxFor(m => m.TwitterText)
         @Html.Hint(T("The text that will be posted to a users twitter"))
     </div>
+
+    <div class="form-group">
+        @Html.CheckBoxFor(m => m.DisplayFacebook)
+        @Html.LabelFor(m => m.DisplayFacebook, T("Display Facebook Share").Text, new { @class = "forcheckbox" })
+        @Html.Hint(T("Check this if you want to display Facebook sharing for this content item."))
+    </div>
 </fieldset>

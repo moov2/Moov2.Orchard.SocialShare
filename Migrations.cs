@@ -21,5 +21,15 @@ namespace Moov2.Orchard.SocialShare
 
             return 1;
         }
+
+        public int UpdateFrom1()
+        {
+            SchemaBuilder.AlterTable("SocialSharePartRecord",
+                table => table
+                    .AddColumn<bool>("DisplayFacebook")
+                );
+
+            return 2;
+        }
     }
 }

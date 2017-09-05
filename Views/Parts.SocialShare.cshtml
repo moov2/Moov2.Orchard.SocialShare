@@ -1,8 +1,39 @@
-﻿@if (Model.DisplayTwitter)
-{
-    <a class="twitter-share-button" target="_blank" data-show-count="false"
-       href="@string.Format("https://twitter.com/intent/tweet?text={0}",Model.TwitterText)">
-        Tweet
-    </a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-}
+﻿@using Orchard.ContentManagement
 
+@if (Model.DisplayTwitter || Model.DisplayFacebook)
+{
+    <ul class="social-sharing">
+    @if (Model.DisplayTwitter)
+    {
+        <li>
+            <a class="twitter-share-button" target="_blank" data-show-count="false"
+               href="@string.Format("https://twitter.com/intent/tweet?text={0}", Model.TwitterText)">
+                Tweet
+            </a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </li>
+    }
+
+    @if (Model.DisplayFacebook)
+    {
+        <li>
+            <div id="fb-root"></div>
+            <script>
+                (function(d, s, id) {
+                  var js, fjs = d.getElementsByTagName(s)[0];
+                  if (d.getElementById(id)) return;
+                  js = d.createElement(s); js.id = id;
+                  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.10";
+                  fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+                @if (Url.RequestContext.HttpContext.Request.Url.Host.Equals("localhost"))
+                {
+                    <text>console.log("Facebook sharing from a local hostname may not work.");</text>
+                }
+            </script>
+
+            <div class="fb-share-button" data-href="@Url.RequestContext.HttpContext.Request.Url" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div>
+            
+        </li>
+    }
+    </ul>
+}
