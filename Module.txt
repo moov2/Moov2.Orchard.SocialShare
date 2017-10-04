@@ -1,10 +1,12 @@
-﻿Name: Moov2.Orchard.SocialShare
+﻿Name: Social Share
 AntiForgery: enabled
-Author: The Orchard Team
-Website: http://orchardproject.net
+Author: Moov2
+Website: https://github.com/moov2/Moov2.Orchard.SocialShare
 Version: 1.0
-OrchardVersion: 1.0
-Description: Description for the module
+OrchardVersion: 1.10.2
+Description: Adds social sharing buttons to content types
 Features:
     Moov2.Orchard.SocialShare:
-        Description: Description for feature Moov2.Orchard.SocialShare.
+        Name: Social Share
+        Description: Adds social sharing buttons to content types.
+        Category: Social
