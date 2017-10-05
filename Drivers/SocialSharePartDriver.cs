@@ -32,7 +32,7 @@ namespace Moov2.Orchard.SocialShare.Drivers
 
         protected override DriverResult Display(SocialSharePart part, string displayType, dynamic shapeHelper)
         {
-            if(displayType == "Detail")
+            if (displayType == "Detail")
             {
                 return ContentShape("Parts_SocialShare",
                     () => shapeHelper.Parts_SocialShare(
@@ -49,7 +49,7 @@ namespace Moov2.Orchard.SocialShare.Drivers
                 );
 
         }
-        
+
         #endregion
 
         #region Editor
@@ -78,16 +78,26 @@ namespace Moov2.Orchard.SocialShare.Drivers
             if (context.Data.Element(part.PartDefinition.Name) == null)
                 return;
 
-            context.ImportAttribute(part.PartDefinition.Name, "DisplayTwitter", displayTwitter => part.DisplayTwitter = bool.Parse(displayTwitter));
+            context.ImportAttribute(part.PartDefinition.Name, "DisplayFacebook", displayFacebook => part.DisplayFacebook = SafeParseBool(displayFacebook));
+            context.ImportAttribute(part.PartDefinition.Name, "DisplayTwitter", displayTwitter => part.DisplayTwitter = SafeParseBool(displayTwitter));
             context.ImportAttribute(part.PartDefinition.Name, "TwitterText", twitterText => part.TwitterText = twitterText);
         }
 
         protected override void Exporting(SocialSharePart part, ExportContentContext context)
         {
+            context.Element(part.PartDefinition.Name).SetAttributeValue("DisplayFacebook", part.DisplayFacebook);
             context.Element(part.PartDefinition.Name).SetAttributeValue("DisplayTwitter", part.DisplayTwitter);
             context.Element(part.PartDefinition.Name).SetAttributeValue("TwitterText", part.TwitterText);
         }
 
+        #endregion
+
+        #region Helpers
+        private bool SafeParseBool(string value, bool defaultValue = false)
+        {
+            bool parsed;
+            return bool.TryParse(value, out parsed) ? parsed : defaultValue;
+        }
         #endregion
     }
 }
